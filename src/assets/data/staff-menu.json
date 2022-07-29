@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "label": "ເມນູຫຼັກ",
+            "icon": "pi pi-home",
+            "items": [
+                {
+                    "label": "ໜ້າຫຼັກ",
+                    "icon": "pi pi-fw pi-home",
+                    "routerLink": [""]
+                },
+                {
+                    "label": "ໃຫ້ບໍລິການ",
+                    "icon": "pi pi-desktop",
+                    "routerLink": ["services"]
+                }
+            ]
+        }
+    ]
+}

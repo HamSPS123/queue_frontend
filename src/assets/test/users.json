@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "name": "Koung Kobgap",
+            "email": "koung@gmail.com",
+            "password": "a12345678",
+            "role": "admin"
+        },
+        {
+            "id": "2",
+            "name": "Samlie Saiymai",
+            "email": "samlie@gmail.com",
+            "password": "s12345678",
+            "role": "staff"
+        },
+        {
+            "id": "3",
+            "name": "Soukchai Soksai",
+            "email": "soukchai@gmail.com",
+            "password": "s12345678",
+            "role": "staff"
+        },
+        {
+            "id": "4",
+            "name": "Nilakone Sivilay",
+            "email": "nilakone@gmail.com",
+            "password": "a12345678",
+            "role": "admin"
+        },
+        {
+            "id": "5",
+            "name": "Sengphachanh Siphaxai",
+            "email": "sengphachanh@gmail.com",
+            "password": "s12345678",
+            "role": "staff"
+        },
+        {
+            "id": "6",
+            "name": "Seven Ninlavanh",
+            "email": "seven@gmail.com",
+            "password": "s12345678",
+            "role": "staff"
+        },
+        {
+            "id": "6",
+            "name": "Saiyphet",
+            "email": "saiyphet@gmail.com",
+            "password": "s12345678",
+            "role": "staff"
+        }
+    ]
+}

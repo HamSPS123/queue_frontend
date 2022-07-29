@@ -1,0 +1,33 @@
+<p-dialog [(visible)]="showingDialog" [style]="{width: '450px'}" [header]="dialogTitle" [modal]="true"
+    styleClass="p-fluid" (onShow)="onShowDialog()" (onHide)="onHideDialog()">
+    <ng-template pTemplate="content">
+        <form [formGroup]="formGroup" autocomplete="off">
+            <div class="field">
+                <label for="code">ລະຫັດພະນັກງານ <i class="p-error">*</i></label>
+                <input type="text" pInputText id="code" formControlName="code" placeholder="ປ້ອນລະຫັດພະນັກງານ" />
+                <small class="p-error" *ngIf="submitted && !item?.code">ກຸລຸນາປ້ອນລະຫັດພະນັກງານ.</small>
+            </div>
+            <div class="field">
+                <label for="firstName">ຊື່ພະນັກງານ <i class="p-error">*</i></label>
+                <input type="text" pInputText id="firstName" formControlName="firstName" placeholder="ປ້ອນຊື່ພະນັກງານ" />
+                <small class="p-error" *ngIf="submitted && !item?.firstName">ກຸລຸນາປ້ອນຊື່ພະນັກງານ.</small>
+            </div>
+            <div class="field">
+                <label for="lastName">ນາມສະກຸນ <i class="p-error">*</i></label>
+                <input type="text" pInputText id="lastName" formControlName="lastName" placeholder="ປ້ອນນາມສະກຸນ" />
+                <small class="p-error" *ngIf="submitted && !item?.lastName">ກຸລຸນາປ້ອນນາມສະກຸນ.</small>
+            </div>
+            <div formGroupName="role" class="field">
+                <label for="id">ສິດເຂົ້າໃຊ້ <i class="p-error">*</i></label>
+                <p-dropdown appendTo="body" [options]="roles$ | async" placeholder="ເລືອກສິດ"
+                    optionValue="id" optionLabel="name" id="id" formControlName="id">
+                </p-dropdown>
+            </div>
+        </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="ຍົກເລີກ" icon="pi pi-times" class="p-button-text" (click)="onHideDialog()"></button>
+        <button pButton pRipple label="ບັນທຶກ" [loading]="spinner$ | async" icon="pi pi-check" class="p-button-text" (click)="onSave()"></button>
+    </ng-template>
+</p-dialog>
