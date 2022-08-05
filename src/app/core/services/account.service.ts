@@ -31,7 +31,7 @@ export class AccountService {
         this.storage.store(USER_KEY, user);
     }
 
-    setRole(role): void{
+    setRole(role): void {
         this.storage.store('ROLE', role);
     }
 
@@ -48,33 +48,46 @@ export class AccountService {
         const url: string = `${this.apiUrl}/v1/auth/profile`;
         const token = this.jwtService.token();
 
+        return this.http.get<any>(url, { headers: token }).subscribe(
+            (res) => {
+                if (res.statusCode === 200) {
+                    const user = res?.data;
+                    const role = (user.role?.name).toUpperCase();
 
-        return this.http.get<any>(url, { headers: token }).subscribe((res) => {
-            if (res.statusCode === 200) {
-                const user = res?.data;
-                const role = (user.role?.name).toUpperCase();
+                    console.log(user);
 
-                this.setUserLogin(user);
-                this.setRole(role);
-                this.checkUserRole(role);
+                    this.setUserLogin(user);
+                    this.setRole(role);
+
+                    if (user.defaultPassword !== '' && user.defaultPassword !== null) {
+                        this.router.navigateByUrl('/auth/reset-password');
+                    } else {
+                        this.checkUserRole(role);
+                    }
+                }
+            },
+            (error) => {
+                const errorMessage = error.error.message;
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'ບໍ່ໄດ້ຮັບອະນຸຍາດ',
+                    detail: errorMessage,
+                });
             }
-        }, (error) => {
-            const errorMessage = error.error.message;
-            this.messageService.add({ severity: 'error', summary: 'ບໍ່ໄດ້ຮັບອະນຸຍາດ', detail: errorMessage });
-        });
+        );
     }
 
     checkUserRole(roleName: string): void {
         const role = roleName.toUpperCase();
 
-        if(role){
-            if(role === 'ADMIN'){
-                this.router.navigateByUrl('/admin');
-            }else{
-                this.router.navigateByUrl('/staff');
-            }
-        }else{
-            this.messageService.add({ severity: 'error', summary: 'ເກີດຂໍ້ຜິດພາດ', detail: 'ບັນຊີຂອງທ່ານຍັງບໍ່ໄດ້ຖືກກຳນົດໃຫ້ຢູ່ໃນ Role ໃດໆ' });
+        if (role) {
+            this.router.navigateByUrl('/');
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'ເກີດຂໍ້ຜິດພາດ',
+                detail: 'ບັນຊີຂອງທ່ານຍັງບໍ່ໄດ້ຖືກກຳນົດໃຫ້ຢູ່ໃນ Role ໃດໆ',
+            });
         }
     }
 }

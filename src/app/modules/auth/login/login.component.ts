@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
 
             }
         }, (error) => {
-            const errorMessage = error.error.message;
+            const errorMessage = error?.error?.message;
             this.messageService.add({ severity: 'error', summary: 'ບໍ່ໄດ້ຮັບອະນຸຍາດ', detail: errorMessage });
         });
     }

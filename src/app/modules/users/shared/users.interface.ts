@@ -1,14 +1,17 @@
 export interface User {
-    id?: number;
-    username?: string;
-    role_id?: number;
-    isActive?: boolean;
-    role?: Role;
-  }
-
-  export interface Role {
+    code: string;
+    firstName: string;
+    lastName: string;
+    role: Role;
+    defaultPassword: string;
+    roleId: number;
     id: number;
-    role_name: string;
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-
+export interface Role {
+    id: number;
+    name: string;
+}

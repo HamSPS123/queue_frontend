@@ -5,6 +5,7 @@ export class UserModel {
     code: string;
 
     @required()
+    @prop({defaultValue: "Test"})
     firstName: string;
 
     @required()

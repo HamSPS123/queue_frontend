@@ -15,3 +15,9 @@ export class LoginModel {
     @minLength({ value: 6 })
     password: string;
 }
+
+export class NewPasswordModel{
+    @required()
+    @minLength({value: 6})
+    newPassword: string;
+}

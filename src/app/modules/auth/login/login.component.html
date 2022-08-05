@@ -4,15 +4,16 @@
             <img [src]="logo" class="w-5 lg:w-10 lg:mt-[50%]" alt="diamond-layout" />
 
 
-                <form [formGroup]="formGroup" (ngSubmit)="login()" class="w-full login-form">
-                    <h2>ເຂົ້າໃຊ້ລະບົບ</h2>
-                    <p class="text-xl">ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບກົດບັດຄິວ</p>
-                    <input pInputText id="code" type="text" placeholder="ກະລຸນາປ້ອນລະຫັດພະນັກງານ" formControlName="code" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.code.errors }" />
-                    <span class="ml-2"></span>
-                    <input pInputText id="password" type="password" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.password.errors }" formControlName="password" />
-                    <span class="ml-2"></span>
-                    <button pButton pRipple label="ເຂົ້າສູ່ລະບົບ" type="submit" [loading]="spinner$ | async" ></button>
-                </form>
+            <form [formGroup]="formGroup" (ngSubmit)="login()" class="w-full login-form" autocomplete="off">
+                <h2>ເຂົ້າໃຊ້ລະບົບ</h2>
+                <p class="text-xl">ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບກົດບັດຄິວ</p>
+                <input pInputText id="code" type="text" placeholder="ກະລຸນາປ້ອນລະຫັດພະນັກງານ" formControlName="code" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.code.errors }" />
+                <span class="ml-2"></span>
+                <input pInputText id="password" type="password" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.password.errors }" formControlName="password" />
+                <!-- <p-password inputId="password" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.password.errors }" formControlName="password" [toggleMask]="true"></p-password> -->
+                <span class="ml-2"></span>
+                <button pButton pRipple label="ເຂົ້າສູ່ລະບົບ" type="submit" [loading]="spinner$ | async"></button>
+            </form>
         </div>
         <div class="object-fill login-image">
             <!-- <div class="login-image-content">
@@ -33,3 +34,5 @@
         </div>
     </div>
 </div>
+
+<p-toast></p-toast>

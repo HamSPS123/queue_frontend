@@ -70,4 +70,8 @@ export class UserListComponent implements OnInit {
             this.child.showingDialog = true;
         })
     }
+
+    onResetPassword(item: User){
+        console.log('reset');
+    }
 }

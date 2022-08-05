@@ -10,12 +10,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { ToastModule } from 'primeng/toast';
 import { AuthComponent } from './auth.component';
+import {CardModule} from 'primeng/card';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { AuthComponent } from './auth.component';
     FormsModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    CardModule
   ]
 })
 export class AuthModule { }
