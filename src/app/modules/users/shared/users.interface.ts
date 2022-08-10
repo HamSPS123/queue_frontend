@@ -1,11 +1,11 @@
 export interface User {
-    code: string;
+    id: number;
+    username: string;
     firstName: string;
     lastName: string;
     role: Role;
     defaultPassword: string;
     roleId: number;
-    id: number;
     isActive: boolean;
     createdAt: Date;
     updatedAt: Date;

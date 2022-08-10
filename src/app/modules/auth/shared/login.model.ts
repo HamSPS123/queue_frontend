@@ -9,7 +9,7 @@ import {
 } from '@rxweb/reactive-form-validators';
 export class LoginModel {
     @required()
-    code: string;
+    username: string;
 
     @required()
     @minLength({ value: 6 })

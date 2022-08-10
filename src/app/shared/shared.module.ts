@@ -11,6 +11,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { TooltipModule } from 'primeng/tooltip';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
 
 
 
@@ -43,7 +45,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     ConfirmDialogModule,
     ToastModule,
     DropdownModule,
-    RadioButtonModule
+    RadioButtonModule,
+    TooltipModule,
+    ConfirmPopupModule
   ]
 })
 export class SharedModule { }

@@ -2,10 +2,9 @@ import { minLength, prop, propObject, required, unique } from '@rxweb/reactive-f
 
 export class UserModel {
     @required()
-    code: string;
+    username: string;
 
     @required()
-    @prop({defaultValue: "Test"})
     firstName: string;
 
     @required()

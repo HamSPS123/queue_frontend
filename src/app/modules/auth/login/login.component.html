@@ -7,7 +7,7 @@
             <form [formGroup]="formGroup" (ngSubmit)="login()" class="w-full login-form" autocomplete="off">
                 <h2>ເຂົ້າໃຊ້ລະບົບ</h2>
                 <p class="text-xl">ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບກົດບັດຄິວ</p>
-                <input pInputText id="code" type="text" placeholder="ກະລຸນາປ້ອນລະຫັດພະນັກງານ" formControlName="code" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.code.errors }" />
+                <input pInputText id="username" type="text" placeholder="ກະລຸນາປ້ອນລະຫັດພະນັກງານ" formControlName="username" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.username.errors }" />
                 <span class="ml-2"></span>
                 <input pInputText id="password" type="password" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.password.errors }" formControlName="password" />
                 <!-- <p-password inputId="password" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.password.errors }" formControlName="password" [toggleMask]="true"></p-password> -->

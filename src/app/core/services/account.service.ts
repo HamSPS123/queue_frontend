@@ -54,8 +54,6 @@ export class AccountService {
                     const user = res?.data;
                     const role = (user.role?.name).toUpperCase();
 
-                    console.log(user);
-
                     this.setUserLogin(user);
                     this.setRole(role);
 

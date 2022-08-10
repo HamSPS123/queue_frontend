@@ -1,11 +1,10 @@
-<p-dialog [(visible)]="showingDialog" [style]="{width: '450px'}" [header]="dialogTitle" [modal]="true"
-    styleClass="p-fluid" (onShow)="onShowDialog()" (onHide)="onHideDialog()">
+<p-dialog [(visible)]="showingDialog" [style]="{width: '450px'}" [header]="dialogTitle" [modal]="true" styleClass="p-fluid" (onShow)="onShowDialog()" (onHide)="onHideDialog()">
     <ng-template pTemplate="content">
         <form [formGroup]="formGroup" autocomplete="off">
             <div class="field">
-                <label for="code">ລະຫັດພະນັກງານ <i class="p-error">*</i></label>
-                <input type="text" pInputText id="code" formControlName="code" placeholder="ປ້ອນລະຫັດພະນັກງານ" />
-                <small class="p-error" *ngIf="submitted && !item?.code">ກຸລຸນາປ້ອນລະຫັດພະນັກງານ.</small>
+                <label for="username">ລະຫັດພະນັກງານ <i class="p-error">*</i></label>
+                <input type="text" pInputText id="username" formControlName="username" placeholder="ປ້ອນລະຫັດພະນັກງານ" />
+                <small class="p-error" *ngIf="submitted && !item?.username">ກຸລຸນາປ້ອນລະຫັດພະນັກງານ.</small>
             </div>
             <div class="field">
                 <label for="firstName">ຊື່ພະນັກງານ <i class="p-error">*</i></label>
@@ -19,8 +18,7 @@
             </div>
             <div formGroupName="role" class="field">
                 <label for="id">ສິດເຂົ້າໃຊ້ <i class="p-error">*</i></label>
-                <p-dropdown appendTo="body" [options]="roles$ | async" placeholder="ເລືອກສິດ"
-                    optionValue="id" optionLabel="name" id="id" formControlName="id">
+                <p-dropdown appendTo="body" [options]="roles$ | async" placeholder="ເລືອກສິດ" optionValue="id" optionLabel="name" id="id" formControlName="id">
                 </p-dropdown>
             </div>
         </form>
