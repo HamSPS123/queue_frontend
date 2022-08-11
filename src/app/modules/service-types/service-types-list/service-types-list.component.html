@@ -1,0 +1,59 @@
+<div class="card">
+    <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="ເພີ່ມຂໍ້ມູນ" icon="pi pi-plus" class="mr-2 p-button-success" (click)="onCreate()"></button>
+            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="onDeleteSelected()" [disabled]="!selectedTypes || !selectedTypes.length"></button>
+        </ng-template>
+
+    </p-toolbar>
+
+    <p-table #dt [value]="serviceTypes" [rows]="10" [paginator]="true" [globalFilterFields]="['code', 'name']" responsiveLayout="scroll" [rowHover]="true" currentPageReportTemplate="ສະແດງ {first} ເຖິງ {last} ຈາກທັງໝົດ {totalRecords} ລາຍການ" [showCurrentPageReport]="true"
+        [loading]="spinner$ | async" [(selection)]="selectedTypes" dataKey="id">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">ຂໍ້ມູນປະເພດບໍລິການ</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="ຄົ້ນຫາ..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>#</th>
+                <th pSortableColumn="code">ລະຫັດ
+                    <p-sortIcon field="code"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name">ຊື່ປະເພດບໍລິການ
+                    <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="item"></p-tableCheckbox>
+                </td>
+                <td>{{rowIndex + 1}}</td>
+                <td>{{item?.code}}</td>
+                <td>{{item?.name}}</td>
+                <td class="text-center">
+                    <button pButton pRipple pTooltip="ແກ້ໄຂຂໍ້ມູນ" tooltipPosition="bottom" icon="pi pi-pencil" class="mr-2 p-button-rounded p-button-success" (click)="onUpdate(item)"></button>
+                    <button pButton pRipple pTooltip="ລົບຂໍ້ມູນ" tooltipPosition="bottom" icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete($event, item.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<app-service-types-form></app-service-types-form>
+<p-toast></p-toast>
+
+<p-confirmPopup key="popup"></p-confirmPopup>
+
+<p-confirmDialog key="confirm"></p-confirmDialog>

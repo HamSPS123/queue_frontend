@@ -1,0 +1,21 @@
+<p-dialog [(visible)]="showingDialog" [style]="{width: '450px'}" [header]="dialogTitle" [modal]="true" styleClass="p-fluid" (onShow)="onShowDialog()" (onHide)="onHideDialog()">
+    <ng-template pTemplate="content">
+        <form [formGroup]="formGroup" autocomplete="off">
+            <div class="field">
+                <label for="code">ລະຫັດປະເພດບໍລິການ <i class="p-error">*</i></label>
+                <input type="text" pInputText id="code" formControlName="code" placeholder="ປ້ອນລະຫັດປະເພດບໍລິການ" />
+                <small class="p-error" *ngIf="submitted && !item?.code">ກຸລຸນາປ້ອນລະຫັດປະເພດບໍລິການ.</small>
+            </div>
+            <div class="field">
+                <label for="name">ຊື່ປະເພດບໍລິການ <i class="p-error">*</i></label>
+                <input type="text" pInputText id="name" formControlName="name" placeholder="ປ້ອນຊື່ປະເພດບໍລິການ" />
+                <small class="p-error" *ngIf="submitted && !item?.name">ກຸລຸນາປ້ອນຊື່ປະເພດບໍລິການ.</small>
+            </div>
+        </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="ຍົກເລີກ" icon="pi pi-times" class="p-button-text" (click)="onHideDialog()"></button>
+        <button pButton pRipple label="ບັນທຶກ" [loading]="spinner$ | async" icon="pi pi-check" class="p-button-text" (click)="onSave()"></button>
+    </ng-template>
+</p-dialog>

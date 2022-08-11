@@ -85,7 +85,7 @@ export class AuthService {
         console.log(body);
 
         const result = this.http
-            .patch<User>(url, body, { headers: this.token })
+            .patch<User>(url, body)
             .pipe(
                 tap(
                     (res: any) => {
