@@ -32,6 +32,7 @@ import { reducer } from './core/state/spinner/spinner.reducer';
 import { SpinnerInterceptor } from './core/intercepters/spinner.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { AuthInterceptor } from './core/intercepters/auth.interceptor';
 
 FullCalendarModule.registerPlugins([
     dayGridPlugin,
@@ -49,7 +50,7 @@ FullCalendarModule.registerPlugins([
         BrowserAnimationsModule,
         ContextMenuModule,
         NgxWebstorageModule.forRoot(),
-        StoreModule.forRoot({ spinner: reducer })
+        StoreModule.forRoot({ spinner: reducer }),
     ],
     declarations: [
         AppComponent,
@@ -63,6 +64,7 @@ FullCalendarModule.registerPlugins([
         AppNotfoundComponent,
     ],
     providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: SpinnerInterceptor,

@@ -48,7 +48,7 @@ export class AccountService {
         const url: string = `${this.apiUrl}/v1/auth/profile`;
         const token = this.jwtService.token();
 
-        return this.http.get<any>(url, { headers: token }).subscribe(
+        return this.http.get<any>(url).subscribe(
             (res) => {
                 if (res.statusCode === 200) {
                     const user = res?.data;
