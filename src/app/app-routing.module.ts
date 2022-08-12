@@ -46,6 +46,15 @@ const routes: Routes = [
                     ),
                 data: { role: 'ADMIN' },
             },
+            {
+                path: 'services',
+                canActivate: [AuthGuard],
+                loadChildren: () =>
+                    import('./modules/services/services.module').then(
+                        (m) => m.ServicesModule
+                    ),
+                data: { role: 'ADMIN' },
+            },
         ],
     },
     { path: 'notfound', component: AppNotfoundComponent },
