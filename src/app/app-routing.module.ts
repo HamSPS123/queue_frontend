@@ -55,6 +55,15 @@ const routes: Routes = [
                     ),
                 data: { role: 'ADMIN' },
             },
+            {
+                path: 'counters',
+                canActivate: [AuthGuard],
+                loadChildren: () =>
+                    import('./modules/counters/counters.module').then(
+                        (m) => m.CountersModule
+                    ),
+                data: { role: 'ADMIN' },
+            },
         ],
     },
     { path: 'notfound', component: AppNotfoundComponent },
