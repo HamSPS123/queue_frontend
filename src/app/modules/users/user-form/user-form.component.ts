@@ -24,7 +24,7 @@ export class UserFormComponent implements OnInit {
     dialogTitle: string = '';
     formGroup: FormGroup;
     submitted: boolean;
-    item: User;
+    user: User;
 
     userId: string;
 
@@ -51,6 +51,8 @@ export class UserFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log(this.user);
+
         this.userId = this.route.snapshot.paramMap.get('id');
 
         this.initForm();
@@ -82,7 +84,7 @@ export class UserFormComponent implements OnInit {
             return;
         }
 
-        const id = this.item?.id;
+        const id = this.user?.id;
         const formData = this.formGroup.value;
 
         if (id) {
@@ -108,5 +110,6 @@ export class UserFormComponent implements OnInit {
         this.submitted = false;
         this.formGroup.reset();
         this.formGroup.enable();
+        this.user = {};
     }
 }

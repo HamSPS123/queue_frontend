@@ -13,8 +13,11 @@ export class ServicesModel {
     code: string;
 
     @required()
-    name: string;
+    laName: string;
+
+    @prop()
+    enName: string;
 
     @propObject()
-    serviceType: ServiceTypesModel;
+    type: ServiceTypesModel;
 }
