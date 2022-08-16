@@ -2,7 +2,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { ServicesFormComponent } from './../services-form/services-form.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Services, ServiceTypes } from '../shared/services.interface';
+import { Services, Type } from '../shared/services.interface';
 import { Store, select } from '@ngrx/store';
 import { BreadcrumbService } from 'src/app/shared/services/app.breadcrumb.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -19,7 +19,7 @@ export class ServicesListComponent implements OnInit {
 
     selectedServices: Services[];
 
-    serviceTypes: ServiceTypes[];
+    serviceTypes: Type[];
 
     private unsubscribeAll: Subject<any> = new Subject<any>();
 

@@ -1,41 +1,39 @@
-<p-dialog
-    [(visible)]="showingDialog"
-    [style]="{ width: '450px' }"
-    [header]="dialogTitle"
-    [modal]="true"
-    styleClass="p-fluid"
-    (onShow)="onShowDialog()"
-    (onHide)="onHideDialog()"
->
+<p-dialog [(visible)]="showingDialog" [style]="{ width: '450px' }" [header]="dialogTitle" [modal]="true" styleClass="p-fluid" (onShow)="onShowDialog()" (onHide)="onHideDialog()">
     <ng-template pTemplate="content">
         <form [formGroup]="formGroup" autocomplete="off">
             <div class="field">
                 <label for="code">ລະຫັດພະນັກງານ <i class="p-error">*</i></label>
-                <input
-                    type="text"
-                    pInputText
-                    id="code"
-                    formControlName="code"
-                    placeholder="ປ້ອນລະຫັດ"
-                />
-                <small class="p-error" *ngIf="submitted && f.code.errors"
-                    >ກຸລຸນາປ້ອນລະຫັດ.</small
+                <input type="text" pInputText id="code" formControlName="code" placeholder="ປ້ອນລະຫັດ" />
+                <small class="p-error" *ngIf="submitted && f.code.errors">ກຸລຸນາປ້ອນລະຫັດ.</small
                 >
             </div>
             <div class="field">
-                <label for="name">ຊື່ <i class="p-error">*</i></label>
+                <label for="laName">ຊື່ພາສາລາວ <i class="p-error">*</i></label>
                 <input
                     type="text"
                     pInputText
-                    id="name"
-                    formControlName="name"
-                    placeholder="ປ້ອນຊື່"
+                    id="laName"
+                    formControlName="laName"
+                    placeholder="ປ້ອນຊື່ພາສາລາວ"
                 />
-                <small class="p-error" *ngIf="submitted && f.name.errors"
-                    >ກຸລຸນາປ້ອນນາມສະກຸນ.</small
+                <small class="p-error" *ngIf="submitted && f.laName.errors"
+                    >ກຸລຸນາປ້ອນຊື່ພາສາລາວ.</small
                 >
             </div>
-            <div formGroupName="serviceType" class="field">
+            <div class="field">
+                <label for="enName">ຊື່ພາສາອັງກິດ</label>
+                <input
+                    type="text"
+                    pInputText
+                    id="enName"
+                    formControlName="enName"
+                    placeholder="ປ້ອນຊື່ພາສາອັງກິດ"
+                />
+                <small class="p-error" *ngIf="submitted && f.enName.errors"
+                    >ກຸລຸນາປ້ອນຊື່ພາສາອັງກິດ.</small
+                >
+            </div>
+            <div formGroupName="type" class="field">
                 <label for="id">ປະເພດບໍລິການ <i class="p-error">*</i></label>
                 <p-dropdown
                     appendTo="body"
@@ -49,7 +47,7 @@
                 </p-dropdown>
                 <small
                     class="p-error"
-                    *ngIf="submitted && f.serviceType.controls.id.errors"
+                    *ngIf="submitted && f.type.controls.id.errors"
                     >ກຸລຸນາປ້ອນລະຫັດ.</small
                 >
             </div>

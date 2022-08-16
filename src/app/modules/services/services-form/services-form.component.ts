@@ -10,7 +10,7 @@ import {
     RxFormGroup,
 } from '@rxweb/reactive-form-validators';
 import { Store, select } from '@ngrx/store';
-import { Services, ServiceTypes } from './../shared/services.interface';
+import { Services, Type } from './../shared/services.interface';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
@@ -31,7 +31,7 @@ export class ServicesFormComponent implements OnInit {
     serviceId: string;
 
     spinner$: Observable<boolean>;
-    serviceTypes$: Observable<ServiceTypes[]>;
+    serviceTypes$: Observable<Type[]>;
 
     private unsubscribeAll: Subject<any> = new Subject<any>();
     constructor(
@@ -76,14 +76,14 @@ export class ServicesFormComponent implements OnInit {
         this.formGroup.reset();
         this.formGroup.enable();
         this.formGroup.get('code').clearValidators();
-        this.formGroup.get('name').clearValidators();
-        this.formGroup.get('serviceType.id').clearValidators();
+        this.formGroup.get('laName').clearValidators();
+        this.formGroup.get('type.id').clearValidators();
         this.formGroup.updateValueAndValidity;
     }
 
     initForm() {
         const model = new ServicesModel();
-        model.serviceType = new ServiceTypesModel();
+        model.type = new ServiceTypesModel();
         this.formGroup = <RxFormGroup>this.fb.formGroup(model);
     }
 

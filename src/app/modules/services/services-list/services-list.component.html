@@ -1,41 +1,13 @@
 <div class="card">
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
-            <button
-                pButton
-                pRipple
-                label="ເພີ່ມຂໍ້ມູນ"
-                icon="pi pi-plus"
-                class="mr-2 p-button-success"
-                (click)="onCreate()"
-            ></button>
-            <button
-                pButton
-                pRipple
-                [label]="Delete"
-                icon="pi pi-trash"
-                class="p-button-danger"
-                (click)="onDeleteSelected()"
-                [disabled]="!selectedServices || !selectedServices.length"
-            ></button>
+            <button pButton pRipple label="ເພີ່ມຂໍ້ມູນ" icon="pi pi-plus" class="mr-2 p-button-success" (click)="onCreate()"></button>
+            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="onDeleteSelected()" [disabled]="!selectedServices || !selectedServices.length"></button>
         </ng-template>
     </p-toolbar>
 
-    <p-table
-        #dt
-        [value]="services"
-        [rows]="10"
-        [paginator]="true"
-        [globalFilterFields]="['code', 'name', 'serviceType.name']"
-        responsiveLayout="scroll"
-        [rowHover]="true"
-        dataKey="services.id"
-        currentPageReportTemplate="ສະແດງ {first} ເຖິງ {last} ຈາກທັງໝົດ {totalRecords} ລາຍການ"
-        [showCurrentPageReport]="true"
-        [loading]="spinner$ | async"
-        [(selection)]="selectedServices"
-        dataKey="id"
-    >
+    <p-table #dt [value]="services" [rows]="10" [paginator]="true" [globalFilterFields]="['code', 'name', 'serviceType.name']" responsiveLayout="scroll" [rowHover]="true" dataKey="services.id" currentPageReportTemplate="ສະແດງ {first} ເຖິງ {last} ຈາກທັງໝົດ {totalRecords} ລາຍການ"
+        [showCurrentPageReport]="true" [loading]="spinner$ | async" [(selection)]="selectedServices" dataKey="id">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 <h5 class="m-0">ຈັດການຂໍ້ມູນຜູ້ໃຊ້</h5>
@@ -62,9 +34,13 @@
                     ລະຫັດ
                     <p-sortIcon field="code"></p-sortIcon>
                 </th>
-                <th pSortableColumn="name">
-                    ຊື່
-                    <p-sortIcon field="name"></p-sortIcon>
+                <th pSortableColumn="laName">
+                    ຊື່ພາສາລາວ
+                    <p-sortIcon field="laName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="enName">
+                    ຊື່ພາສາອັງກິດ
+                    <p-sortIcon field="enName"></p-sortIcon>
                 </th>
                 <th pSortableColumn="types">
                     ປະເພດ
@@ -80,27 +56,12 @@
                 </td>
                 <td>{{ rowIndex + 1 }}</td>
                 <td>{{ item?.code }}</td>
-                <td>{{ item?.name }}</td>
-                <td>{{ item?.serviceType?.name }}</td>
+                <td>{{ item?.laName }}</td>
+                <td>{{ item?.enName }}</td>
+                <td>{{ item?.type?.name }}</td>
                 <td>
-                    <button
-                        pButton
-                        pRipple
-                        pTooltip="ແກ້ໄຂຂໍ້ມູນ"
-                        tooltipPosition="bottom"
-                        icon="pi pi-pencil"
-                        class="mr-2 p-button-rounded p-button-success"
-                        (click)="onUpdate(item)"
-                    ></button>
-                    <button
-                        pButton
-                        pRipple
-                        pTooltip="ລົບຂໍ້ມູນ"
-                        tooltipPosition="bottom"
-                        icon="pi pi-trash"
-                        class="p-button-rounded p-button-warning"
-                        (click)="onDelete($event, item.id)"
-                    ></button>
+                    <button pButton pRipple pTooltip="ແກ້ໄຂຂໍ້ມູນ" tooltipPosition="bottom" icon="pi pi-pencil" class="mr-2 p-button-rounded p-button-success" (click)="onUpdate(item)"></button>
+                    <button pButton pRipple pTooltip="ລົບຂໍ້ມູນ" tooltipPosition="bottom" icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete($event, item.id)"></button>
                 </td>
             </tr>
         </ng-template>
