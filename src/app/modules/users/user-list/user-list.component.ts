@@ -55,11 +55,14 @@ export class UserListComponent implements OnInit {
         this.child.showingDialog = true;
     }
 
-    onUpdate(item: User) {
-        this.child.item = { ...item };
+    onUpdate(user: User) {
+        this.child.user = user;
         this.child.dialogTitle = 'ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້';
 
-        Object.entries(item).forEach(([key, value]: any) => {
+        console.log(this.child.user);
+
+
+        Object.entries(user).forEach(([key, value]: any) => {
             const form = this.child.formGroup;
 
             if (form.controls.hasOwnProperty(key)) {
